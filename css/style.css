@@ -34,6 +34,30 @@ body{
   /* animation: duck1 30s infinite; */
 }
 
+.carrot{
+  width: 70px;
+  height:70px;
+  z-index: 10;
+  background: url('../images/carrot.png');
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  left:0;
+  /* animation: duck1 30s infinite; */
+}
+
+.meat{
+  width: 70px;
+  height:70px;
+  z-index: 10;
+  background: url('../images/meat.png');
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  left:0;
+  /* animation: duck1 30s infinite; */
+}
+
 p{
   font-size: 20px;
 }
