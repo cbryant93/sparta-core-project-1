@@ -1,3 +1,7 @@
+body{
+
+}
+
 .container{
   background-image: url(../images/background.png);
   width: 1000px;
@@ -7,6 +11,7 @@
   margin: auto;
   overflow: hidden;
   position: relative;
+  cursor: crosshair;
 }
 
 
@@ -26,10 +31,14 @@
   background-size: contain;
   position: absolute;
   left:0;
-
+  /* animation: duck1 30s infinite; */
 }
 
 p{
   font-size: 20px;
-
 }
+
+/* @keyframes duck1 {
+	from {left:-100px; top: 0px;}
+	to {left:1280px; top: 400px}
+} */
