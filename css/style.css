@@ -1,5 +1,12 @@
 body{
 font-family: 'Audiowide', cursive;
+background: black;
+background-image: url(../images/view2.jpg);
+background-position: bottom;
+
+}
+h1{
+  color: yellow;
 }
 
 p{
@@ -22,7 +29,7 @@ p{
   margin: auto;
   overflow: hidden;
   position: relative;
-  cursor: crosshair;
+  cursor: url('../images/aim.png'), pointer;
 }
 
 

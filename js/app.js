@@ -25,6 +25,8 @@ $(document).ready(function() {
     score += 1;
     missed -= 1;
     timeRunOut();
+    var music = new Audio('../sounds/Mask_Off_8_Bit.mp3');
+    music.play();
 
   })
 
@@ -147,7 +149,10 @@ $(document).ready(function() {
 
   }
 
-
+function shootSound() {
+  var bang = new Audio('../sounds/gun-shot.wav');
+  bang.play();
+}
   //Gain point for hitting Duck
 
   function shootDuck(event) {
@@ -155,6 +160,11 @@ $(document).ready(function() {
     $(this).remove(); //Removes duck <div> from screen
     duckClicked = true;
     $points.html($("<p>" + score + "</p>")); //updates score in the html
+     var quak = new Audio('../sounds/quak.wav');
+     quak.play();
+     shootSound();
+
+
 
   }
 
@@ -167,6 +177,7 @@ $(document).ready(function() {
     $(this).remove(); //Removes carrot <div> from screen
     carrotClicked = true;
     $missed.html($("<p>" + missed + "</p>")); //updates score in the html
+    shootSound();
   }
 
   function noShootCarrot(event) {
@@ -178,6 +189,7 @@ $(document).ready(function() {
     $(this).remove(); //Removes carrot <div> from screen
     meatClicked = true;
     $points.html($("<p>" + score + "</p>")); //updates score in the html
+    shootSound();
   }
 
   function noShootMeat(event) {
