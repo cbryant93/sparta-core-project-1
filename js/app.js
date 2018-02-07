@@ -24,18 +24,19 @@ $(document).ready(function() {
     $(this).hide();
     score += 1;
     missed -= 1;
+    timeRunOut();
 
   })
 
   $('#bResart').click(function() {
     $('#restart').hide();
-    countDown(30);
+
     score = 0;
     missed = 0;
     score += 1;
     missed -= 1;
     createElement = setInterval(duckSelect, 500);
-
+    timeRunOut();
   })
 
   function createDuck() {
@@ -154,6 +155,7 @@ $(document).ready(function() {
     $(this).remove(); //Removes duck <div> from screen
     duckClicked = true;
     $points.html($("<p>" + score + "</p>")); //updates score in the html
+
   }
 
   function noShootDuck(event) {
@@ -201,8 +203,11 @@ $(document).ready(function() {
       i-- || (clearInterval(int), callback());
     }, 1000);
   }
-  $("#startButton").click(function() {
-    countDown(2, function() { //30 = amount of seconds of game
+
+
+  function timeRunOut() {
+
+    countDown(30, function() { //30 = amount of seconds of game
       $('.target').remove();
 
        $("#restart").css("display","block")
@@ -217,6 +222,6 @@ $(document).ready(function() {
       //call end game
       stopElement = clearInterval(createElement);
     });
-  });
+  }
 
 });
