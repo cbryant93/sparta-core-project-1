@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   var score = 0;
   var missed = 0;
   var $points = $(".points");
@@ -13,9 +12,10 @@ $(document).ready(function() {
   var duckId = 1;
   var carrotId = 1;
   var meatId = 1;
-  var startPos = 1;
   var createDuckInterval;
   var moveDuckInterval;
+  var bang = new Audio('../sounds/gun-shot.wav');
+  var music = new Audio('../sounds/Mask_Off_8_Bit.mp3');
 
   // Duck movements start
   $('#startButton').click(function() {
@@ -25,7 +25,7 @@ $(document).ready(function() {
     score += 1;
     missed -= 1;
     timeRunOut();
-    var music = new Audio('../sounds/Mask_Off_8_Bit.mp3');
+    music = new Audio('../sounds/Mask_Off_8_Bit.mp3');
     music.play();
 
   })
@@ -39,6 +39,7 @@ $(document).ready(function() {
     missed -= 1;
     createElement = setInterval(duckSelect, 500);
     timeRunOut();
+    music.play();
   })
 
   function createDuck() {
@@ -149,10 +150,6 @@ $(document).ready(function() {
 
   }
 
-function shootSound() {
-  var bang = new Audio('../sounds/gun-shot.wav');
-  bang.play();
-}
   //Gain point for hitting Duck
 
   function shootDuck(event) {
@@ -162,7 +159,7 @@ function shootSound() {
     $points.html($("<p>" + score + "</p>")); //updates score in the html
      var quak = new Audio('../sounds/quak.wav');
      quak.play();
-     shootSound();
+     bang.play();
 
 
 
@@ -177,7 +174,7 @@ function shootSound() {
     $(this).remove(); //Removes carrot <div> from screen
     carrotClicked = true;
     $missed.html($("<p>" + missed + "</p>")); //updates score in the html
-    shootSound();
+    bang.play();
   }
 
   function noShootCarrot(event) {
@@ -189,7 +186,7 @@ function shootSound() {
     $(this).remove(); //Removes carrot <div> from screen
     meatClicked = true;
     $points.html($("<p>" + score + "</p>")); //updates score in the html
-    shootSound();
+    bang.play();
   }
 
   function noShootMeat(event) {
@@ -219,13 +216,13 @@ function shootSound() {
 
   function timeRunOut() {
 
-    countDown(30, function() { //30 = amount of seconds of game
+    countDown(1, function() { //30 = amount of seconds of game
       $('.target').remove();
 
        $("#restart").css("display","block")
 
       if (score > missed) {
-       $("#endMessage").html($("<p>You bloody Thirsty animal!</p>"));
+       $("#endMessage").html($("<p>You blood Thirsty animal!</p>"));
       } else if (missed > score) {
        $("#endMessage").html($("<p>We get it, your're a Vegan!</p>"));
       } else {
@@ -233,6 +230,9 @@ function shootSound() {
       }
       //call end game
       stopElement = clearInterval(createElement);
+      music.pause();
+      var laugh = new Audio('../sounds/dog-laugh.mp3');
+      laugh.play();
     });
   }
 

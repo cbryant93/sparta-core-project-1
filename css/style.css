@@ -7,10 +7,11 @@ background-position: bottom;
 }
 h1{
   color: yellow;
+  font-size: 80px;
 }
 
 p{
-  font-size: 20px;
+  font-size: 25px;
   color: red;
   text-align: center;
 }
@@ -84,20 +85,39 @@ p{
   margin: 2px;
   /* animation: duck1 30s infinite; */
 }
+.gameover div{
+opacity:  0.5;
+}
 
 
 .gameover{
-  width: 200px;
+  width: 400px;
   background: grey;
-  opacity: 70%;
+  padding: 10px;
   display: none;
   text-align: center;
   color: black;
   border-radius: 5%;
   position: absolute;
-  margin-left: 350px;
+  margin-left: 250px;
   margin-top: 200px;
+  border: black solid 3px;
 }
+
+.gameover p{
+  color: black;
+  font-size: 35px;
+}
+
+#bResart{
+  width: 180px;
+  height: 60px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 30px;
+
+}
+
 
 /* @keyframes flash {
 0% {opacity: 1;}
