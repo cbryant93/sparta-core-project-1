@@ -2,6 +2,12 @@ body{
 font-family: 'Audiowide', cursive;
 }
 
+p{
+  font-size: 20px;
+  color: red;
+  text-align: center;
+}
+
 .container{
   background-image: url(../images/background.png);
   width: 1000px;
@@ -66,13 +72,13 @@ font-family: 'Audiowide', cursive;
   /* animation: duck1 30s infinite; */
 }
 
-p{
-  font-size: 20px;
-  color: red;
-  text-align: center;
-}
 
-/* @keyframes duck1 {
-	from {left:-100px; top: 0px;}
-	to {left:1280px; top: 400px}
-} */
+.gameover{
+  background: grey;
+  opacity: 70%;
+  display: none;
+  text-align: center;
+  color: black;
+  border-radius: 5%;
+  margin-left: 100px;
+}

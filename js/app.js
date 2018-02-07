@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
   var score = 0;
   var missed = 0;
   var $points = $(".points");
@@ -16,16 +17,29 @@ $(document).ready(function() {
   var createDuckInterval;
   var moveDuckInterval;
 
-
   // Duck movements start
-  $('button').click(function() {
+  $('#startButton').click(function() {
     createElement = setInterval(duckSelect, 500);
     $('.container').click(miss);
     $(this).hide();
+    score += 1;
+    missed -= 1;
+
+  })
+
+  $('#bResart').click(function() {
+    $('#restart').hide();
+    countDown(30);
+    score = 0;
+    missed = 0;
+    score += 1;
+    missed -= 1;
+    createElement = setInterval(duckSelect, 500);
+
   })
 
   function createDuck() {
-    var duck = $('<div class="duck" id="' + duckId + '"></div>'); //Creates a duv which includes unique ID for each duck
+    var duck = $('<div class="target duck" id="' + duckId + '"></div>'); //Creates a duv which includes unique ID for each duck
     var duckYDir = true;
     var duckYPx = 0;
     var duckYInterval;
@@ -63,7 +77,7 @@ $(document).ready(function() {
   }
 
   function createCarrot() {
-    var carrot = $('<div class="carrot" id="' + carrotId + '"></div>'); //Creates a div which includes unique ID for each duck
+    var carrot = $('<div class="target carrot" id="' + carrotId + '"></div>'); //Creates a div which includes unique ID for each duck
     carrotId++;
     $('.container').append(carrot); //Appends the duck to appear in the background
     carrot.css('left', '0');
@@ -80,7 +94,7 @@ $(document).ready(function() {
   }
 
   function createMeat() {
-    var meat = $('<div class="meat" id="' + meatId + '"></div>'); //Creates a div which includes unique ID for each duck
+    var meat = $('<div class="target meat" id="' + meatId + '"></div>'); //Creates a div which includes unique ID for each duck
     meatId++;
     $('.container').append(meat); //Appends the duck to appear in the background
     meat.css('left', '0');
@@ -98,14 +112,10 @@ $(document).ready(function() {
   }
 
 
-
   //select random target
   function duckSelect() {
 
     var randomSelect = Math.floor(Math.random() * 3);
-
-    // return randomSelect;
-
 
     switch (randomSelect) {
       case 0:
@@ -183,39 +193,30 @@ $(document).ready(function() {
 
   }
 
-
-
   //timer
   function countDown(i, callback) {
     callback = callback || function() {};
     var int = setInterval(function() {
-      document.getElementById("timer").innerHTML = "Time left:"+ i;
+      document.getElementById("timer").innerHTML = i;
       i-- || (clearInterval(int), callback());
     }, 1000);
   }
-  $("button").click(function() {
-    countDown(30, function() { //30 = amount of seconds of game
+  $("#startButton").click(function() {
+    countDown(2, function() { //30 = amount of seconds of game
+      $('.target').remove();
+
+       $("#restart").css("display","block")
 
       if (score > missed) {
-        alert("You bloody thirsty animal!");
+       $("#endMessage").html($("<p>You bloody Thirsty animal!</p>"));
       } else if (missed > score) {
-        alert("Ok, we get it, your a vegan!");
+       $("#endMessage").html($("<p>We get it, your're a Vegan!</p>"));
       } else {
-        alert("You have dreams of a peaceful world");
+       $("#endMessage").html($("<p>You obviously have dreams of a peaceful world!</p>"));
       }
-      alert("Gameover!"); //Alerts game over when timer runs out
-
       //call end game
+      stopElement = clearInterval(createElement);
     });
   });
-});
-
-$("button").mousedown(function() {
-  buttonClicked = true;
-
-});
-
-$("button").mouseup(function() {
-  buttonClicked = false;
 
 });
