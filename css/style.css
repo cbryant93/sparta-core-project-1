@@ -52,7 +52,7 @@ h1 { /*Title*/
   position: absolute;
   left: 0;
   margin: 2px;
-  /* animation: duck1 30s infinite; */
+
 }
 
 .carrot { /* carrot target */
@@ -65,7 +65,7 @@ h1 { /*Title*/
   position: absolute;
   left: 0;
   margin: 2px;
-  /* animation: duck1 30s infinite; */
+
 }
 
 .meat { /* meat target */

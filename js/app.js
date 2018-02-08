@@ -186,7 +186,7 @@ $(document).ready(function() {
   }
 
   function shootMeat(event) {
-    score += 5; //Increment score by 5 when meat is shot
+    score += 2; //Increment score by 5 when meat is shot
     $(this).remove();
     meatClicked = true;
     $points.html($("<p>" + score + "</p>")); //updates carnivore score in the html
