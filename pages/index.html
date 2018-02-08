@@ -6,7 +6,7 @@
 
   <title>Vegan Duck Hunt</title>
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist 2/css/bootstrap.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="../js/jquery-3.3.1.js" charset="utf-8"></script>
   <script src="../js/app.js" charset="utf-8"></script>
   <link rel="stylesheet" href="../css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Audiowide|Jura|Monoton|Orbitron" rel="stylesheet">
@@ -15,9 +15,9 @@
 
 <body>
   <div class="row">
-  <div class="col-md-12 text-center">
-   <h1>Vegan Duck Hunt</h1>
-  </div>
+    <div class="col-md-12 text-center">
+      <h1>Vegan Duck Hunt</h1>
+    </div>
   </div>
 
   <div class="container row center-block flash">
@@ -27,16 +27,29 @@
 
       <div class="gameover center-block" id="restart">
         <p>GAME OVER!</p>
+        <p id="finalScore"></p>
         <p id="endMessage"></p>
-        <button id="bResart" class="btn center-block"type="button" name="button">Restart</button>
+        <button id="bResart" class="btn center-block" type="button" name="button">Restart</button>
+
+      </div>
+
+      <div class="instructions center-block" id="instruct">
+        <p>How to play?</p>
+        <p>Do you believe meat is murder?</p>
+        <p>Are you fed up of vegans pushing their agenda on you?</p>
+        <p>Are you neither here nor there?</p>
+        <p>Play the game how you would like.</p>
+        <p>Targets will fly across the screen, try your best to click and shoot whatever reflects your beliefs.</p>
+        <button type="button" name="button" id="back">back</button>
       </div>
 
     </div>
 
     <div class="col-md-4">
-    <p>Timer: </p>
-    <p id="timer"></p>
-    <button class="btn btn-primary center-block" id="startButton">Start</button>
+      <p>Timer: </p>
+      <p id="timer"></p>
+      <button class="btn btn-primary center-block" id="startButton">Start</button>
+      <button class="btn  btn-primary  center-block" id="how" type="button" name="button">How to play?</button>
     </div>
 
     <div class="col-md-4">

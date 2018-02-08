@@ -1,38 +1,50 @@
 $(document).ready(function() {
 
-  var score = 0;
-  var missed = 0;
-  var $points = $(".points");
-  var $container = $(".container");
-  var $missed = $(".missed");
+  var score = 0; //Carnivore Score
+  var missed = 0; //Vegan score
+  var $points = $(".points"); //Html score
+  var $missed = $(".missed"); //Html vegan score
+  var $container = $(".container"); //Game containter
   var duckClicked = false;
   var carrotClicked = false;
   var meatClicked = false;
-  var buttonClicked = false;
-  var duckId = 1;
-  var carrotId = 1;
-  var meatId = 1;
-  var createDuckInterval;
-  var moveDuckInterval;
-  var bang = new Audio('../sounds/gun-shot.wav');
-  var music = new Audio('../sounds/Mask_Off_8_Bit.mp3');
+  var duckId = 1; //Unique duck ID
+  var carrotId = 1; //Unique carrot ID
+  var meatId = 1; //Unique meat ID
+  var bang = new Audio('../sounds/gun-shot.wav'); //Gun sound src
+  var music = new Audio('../sounds/Mask_Off_8_Bit.mp3'); //music src
 
-  // Duck movements start
+
+  // Click start button to start the game
   $('#startButton').click(function() {
-    createElement = setInterval(duckSelect, 500);
-    $('.container').click(miss);
-    $(this).hide();
-    score += 1;
+    createElement = setInterval(duckSelect, 500); //Begins creating targets
+    $('.container').click(miss); //prevents points changing when clicking start button
+    $(this).hide(); //Hides button when clicked
+    $('#how').hide(); //Hides 'how to play' button when game begins
+    score += 1; //Keeps scores at 0
     missed -= 1;
-    timeRunOut();
-    music = new Audio('../sounds/Mask_Off_8_Bit.mp3');
-    music.play();
-
+    timeRunOut(); //Calls timeout function when game is over
+    music.play(); //Begins playing music at start of game
+    music.volume = 0.5;
+  })
+  //Click 'how to play button' to get instructions
+  $('#how').click(function() {
+    $(this).hide(); //Hides button when clicked
+    $("#instruct").css("display", "block"); //Displays instructions div
+    $('#startButton').hide(); //Hides start button
+  })
+  //Click back to take you back to main page
+  $('#back').click(function() {
+    $('#instruct').hide(); //Hide intructions div when clicked
+    $("#startButton").css("display", "block");
+    $("#how").css("display", "block");
   })
 
+
+  //Restart game when buttons clicked
   $('#bResart').click(function() {
     $('#restart').hide();
-
+    //Sets games variable back to original value
     score = 0;
     missed = 0;
     score += 1;
@@ -41,30 +53,27 @@ $(document).ready(function() {
     timeRunOut();
     music.play();
   })
-
+  //Create duck function
   function createDuck() {
-    var duck = $('<div class="target duck" id="' + duckId + '"></div>'); //Creates a duv which includes unique ID for each duck
-    var duckYDir = true;
-    var duckYPx = 0;
-    var duckYInterval;
-    duckId++;
+    var duck = $('<div class="target duck" id="' + duckId + '"></div>'); //Creates a div which includes unique ID for each duck
+    var duckYDir = true; // Sets ducks Y movement to true
+    var duckYPx = 0; // Sets ducks Y movement to 0
+    // var duckYInterval;
+    duckId++; //Increments duck id, so each duck has unique ID
     $('.container').append(duck); //Appends the duck to appear in the background
     duck.css('left', '0');
-
     duck.css('top', Math.floor(Math.random() * 500) + 'px'); //spawns duck at random position of Y axis on background container
-    duck.mousedown(shootDuck); //Calls shoot duck fucntion when duck is clicked
+    duck.mousedown(shootDuck); //Calls shoot duck function when duck is clicked
     duck.mouseup(noShootDuck); //Sets duck clicked back to false
-
-    var moveDuck = setInterval(function() { //speed and direction duck goes in
+    //Controls ducks movement
+    var moveDuck = setInterval(function() {
       duck.animate({
-        left: '100vw'
-      }, 5000);
-      console.log(duck.position().top);
-
-      duck.css('top', duck.position().top + duckYPx)
+        left: '100vw' //Duck moves from the left
+      }, 5000); //Speed ducks fly
+      duck.css('top', duck.position().top + duckYPx) //Ducks move up
 
     }, 7);
-
+    //Controls the ducks distance of movement up and down the Y axis
     setInterval(() => {
       if (duckYDir) {
         // moves up
@@ -73,73 +82,70 @@ $(document).ready(function() {
       } else {
         // moves down
         duckYDir = !duckYDir
-        duckYPx += 2;
+        duckYPx += 1.7;
       }
 
     }, 400)
 
   }
-
+  //Create carrot function
   function createCarrot() {
-    var carrot = $('<div class="target carrot" id="' + carrotId + '"></div>'); //Creates a div which includes unique ID for each duck
+    var carrot = $('<div class="target carrot" id="' + carrotId + '"></div>');
     carrotId++;
-    $('.container').append(carrot); //Appends the duck to appear in the background
+    $('.container').append(carrot);
     carrot.css('left', '0');
 
-    carrot.css('top', Math.floor(Math.random() * 500) + 'px'); //spawns duck at random position of Y axis on background container
-    carrot.mousedown(shootCarrot); //Calls shoot duck fucntion when duck is clicked
-    carrot.mouseup(noShootCarrot); //Sets duck clicked back to false
+    carrot.css('top', Math.floor(Math.random() * 500) + 'px');
+    carrot.mousedown(shootCarrot);
+    carrot.mouseup(noShootCarrot);
 
-    var moveCarrot = setInterval(function() { //speed and direction duck goes in
+    var moveCarrot = setInterval(function() {
       carrot.animate({
         'left': '100vw'
       }, 4000);
     }, 10);
   }
-
+  //Create meat function
   function createMeat() {
-    var meat = $('<div class="target meat" id="' + meatId + '"></div>'); //Creates a div which includes unique ID for each duck
+    var meat = $('<div class="target meat" id="' + meatId + '"></div>');
     meatId++;
-    $('.container').append(meat); //Appends the duck to appear in the background
+    $('.container').append(meat);
     meat.css('left', '0');
 
-    meat.css('top', Math.floor(Math.random() * 500) + 'px'); //spawns duck at random position of Y axis on background container
-    meat.mousedown(shootMeat); //Calls shoot duck fucntion when duck is clicked
-    meat.mouseup(noShootMeat); //Sets duck clicked back to false
+    meat.css('top', Math.floor(Math.random() * 500) + 'px');
+    meat.mousedown(shootMeat);
+    meat.mouseup(noShootMeat);
 
-    var moveMeat = setInterval(function() { //speed and direction duck goes in
+    var moveMeat = setInterval(function() {
       meat.animate({
         'left': '100vw'
       }, 3500);
-      // debugger;
+
     }, 10);
   }
 
 
-  //select random target
+  //selects random target to be spawned
   function duckSelect() {
 
-    var randomSelect = Math.floor(Math.random() * 3);
+    var randomSelect = Math.floor(Math.random() * 3); //Select random number between 0-2
 
     switch (randomSelect) {
       case 0:
-        var randomSelect = 0;
 
-        createDuck();
+        createMeat(); //if 0 create Meat target
 
         break;
 
       case 1:
-        var randomSelect = 1;
 
-        createCarrot();
+        createCarrot(); //if 1 create Meat target
 
         break;
 
       case 2:
-        var randomSelect = 2;
 
-        createMeat();
+        createDuck(); //if 2 create Meat target
 
         break;
 
@@ -156,12 +162,10 @@ $(document).ready(function() {
     score += 1; //Increment score by one when duck is shot
     $(this).remove(); //Removes duck <div> from screen
     duckClicked = true;
-    $points.html($("<p>" + score + "</p>")); //updates score in the html
-     var quak = new Audio('../sounds/quak.wav');
-     quak.play();
-     bang.play();
-
-
+    $points.html($("<p>" + score + "</p>")); //updates carnivore score in the html
+    var quak = new Audio('../sounds/quak.wav');
+    quak.play(); //Plays duck sound if duck is shot
+    bang.play(); //Plays gun sound if duck is shot
 
   }
 
@@ -170,10 +174,10 @@ $(document).ready(function() {
   }
 
   function shootCarrot(event) {
-    missed += 3; //Increment score by one when carrot is shot
-    $(this).remove(); //Removes carrot <div> from screen
+    missed += 3; //Increment score by 3 when carrot is shot
+    $(this).remove();
     carrotClicked = true;
-    $missed.html($("<p>" + missed + "</p>")); //updates score in the html
+    $missed.html($("<p>" + missed + "</p>")); //updates vegan score in the html
     bang.play();
   }
 
@@ -182,10 +186,10 @@ $(document).ready(function() {
   }
 
   function shootMeat(event) {
-    score += 5; //Increment score by one when carrot is shot
-    $(this).remove(); //Removes carrot <div> from screen
+    score += 5; //Increment score by 5 when meat is shot
+    $(this).remove();
     meatClicked = true;
-    $points.html($("<p>" + score + "</p>")); //updates score in the html
+    $points.html($("<p>" + score + "</p>")); //updates carnivore score in the html
     bang.play();
   }
 
@@ -199,8 +203,8 @@ $(document).ready(function() {
 
     missed += 1; //Incremenets vegan score when duck missed
     score -= 1; //Decrements main score when duck missed
-    $missed.html($("<p>" + missed + "</p>")); //Updates score in html
-    $points.html($("<p>" + score + "</p>"));
+    $missed.html($("<p>" + missed + "</p>")); //Updates vegan score in html
+    $points.html($("<p>" + score + "</p>")); //Updates carnivore score in html
 
   }
 
@@ -216,23 +220,26 @@ $(document).ready(function() {
 
   function timeRunOut() {
 
-    countDown(1, function() { //30 = amount of seconds of game
-      $('.target').remove();
+    countDown(30, function() { //30 = amount of seconds of game
+      $('.target').remove(); //Divs with class 'target' are removed from container
 
-       $("#restart").css("display","block")
+      $("#restart").css("display", "block"); //display restart event when time runs out
 
-      if (score > missed) {
-       $("#endMessage").html($("<p>You blood Thirsty animal!</p>"));
-      } else if (missed > score) {
-       $("#endMessage").html($("<p>We get it, your're a Vegan!</p>"));
-      } else {
-       $("#endMessage").html($("<p>You obviously have dreams of a peaceful world!</p>"));
+      if (score > missed) { //If carnivore score is greater than vegan score displays result
+        $("#finalScore").html($("<p>Score: " + score + "</p>"));
+        $("#endMessage").html($("<p>You blood Thirsty animal!</p>"));
+      } else if (missed > score) { //Else If vegan score is greater than carnivore score displays result
+        $("#finalScore").html($("<p>Score: " + missed + "</p>"));
+        $("#endMessage").html($("<p>We get it, you're a Vegan!</p>"));
+      } else { //If draw displays result
+        $("#finalScore").html($("<p>It's a Draw!</p>"));
+        $("#endMessage").html($("<p>You obviously have dreams of a peaceful world!</p>"));
       }
-      //call end game
-      stopElement = clearInterval(createElement);
-      music.pause();
+
+      stopElement = clearInterval(createElement); //Stop creating targets
+      music.pause(); //Pause music
       var laugh = new Audio('../sounds/dog-laugh.mp3');
-      laugh.play();
+      laugh.play(); //Play game over sound
     });
   }
 

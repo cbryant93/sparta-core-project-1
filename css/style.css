@@ -1,27 +1,26 @@
-body{
-font-family: 'Audiowide', cursive;
-background: black;
-background-image: url(../images/view2.jpg);
-background-position: bottom;
-
+body {
+  font-family: sans-serif, default;
+  font-family: 'Audiowide', cursive;
+  background: black;
+  background-image: url(../images/view2.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-h1{
+
+h1 { /*Title*/
   color: yellow;
   font-size: 80px;
 }
 
-p{
+#score, #missed, #timer, p { /* carnivore score, vegan score and timer game display */
   font-size: 25px;
   color: red;
   text-align: center;
 }
 
-.flash{
-
-  /* animation: flash linear 1s; */
-}
-
-.container{
+.container { /* game container */
   background-image: url(../images/background.png);
   width: 1000px;
   height: 800px;
@@ -33,64 +32,84 @@ p{
   cursor: url('../images/aim.png'), pointer;
 }
 
-
-#startButton{
+#startButton { /* Start Button */
   width: 200px;
   height: 100px;
-  margin-top: 320px;
+  margin-top: 200px;
 }
 
-#timer{
+#timer { /* timer specific styling*/
   font-weight: bold;
 }
 
-
-
-
-.duck{
+.duck { /* duck target */
   width: 100px;
-  height:70px;
+  height: 70px;
   z-index: 10;
   background: url('../images/duck.png');
   background-position: center;
   background-size: contain;
   position: absolute;
-  left:0;
+  left: 0;
   margin: 2px;
   /* animation: duck1 30s infinite; */
 }
 
-.carrot{
+.carrot { /* carrot target */
   width: 70px;
-  height:70px;
+  height: 70px;
   z-index: 10;
   background: url('../images/carrot.png');
   background-position: center;
   background-size: contain;
   position: absolute;
-  left:0;
+  left: 0;
   margin: 2px;
   /* animation: duck1 30s infinite; */
 }
 
-.meat{
+.meat { /* meat target */
   width: 70px;
-  height:70px;
+  height: 70px;
   z-index: 10;
   background: url('../images/meat.png');
   background-position: center;
   background-size: contain;
   position: absolute;
-  left:0;
+  left: 0;
   margin: 2px;
-  /* animation: duck1 30s infinite; */
-}
-.gameover div{
-opacity:  0.5;
 }
 
+.instructions { /* Instuctions div */
+  width: 700px;
+  background: grey;
+  padding: 10px;
+  display: none;
+  text-align: center;
+  color: black;
+  border-radius: 5%;
+  position: absolute;
+  margin-left: 125px;
+  margin-bottom: 20px;
+  border: black solid 3px;
+}
 
-.gameover{
+.instructions p { /* Instructions text */
+  color: black;
+  font-size: 35px;
+}
+
+#how { /* How to play button */
+  width: 200px;
+  height: 100px;
+  margin-top: 20px;
+}
+
+.gameover div { /* specific gameover display styling */
+  opacity: 0.5;
+}
+
+.gameover { /* Game over display div */
   width: 400px;
   background: grey;
   padding: 10px;
@@ -100,28 +119,28 @@ opacity:  0.5;
   border-radius: 5%;
   position: absolute;
   margin-left: 250px;
-  margin-top: 200px;
+  margin-top: 150px;
   border: black solid 3px;
 }
 
-.gameover p{
+.gameover p { /* Game over text styling */
   color: black;
   font-size: 35px;
 }
 
-#bResart{
+#bResart { /* restart button */
   width: 180px;
   height: 60px;
   border-radius: 10px;
   font-weight: bold;
   font-size: 30px;
-
+  margin-top: 30px;
 }
 
-
-/* @keyframes flash {
-0% {opacity: 1;}
-50% {opacity: .1;}
-100% {opacity: 1;}
-
-} */
+#back { /* back button */
+  width: 180px;
+  height: 60px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 30px;
+}
