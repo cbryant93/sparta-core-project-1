@@ -49,7 +49,7 @@ Using my wireframes I went through the the different user journeys one may take 
 ## Sprints
 For this project we were to use the agile methodology as a basis to our work style. To help follow our own progress we used trello.
 
-![Wireframe](./MD-Images/Screen Shot 2018-02-08 at 14.42.34.png)
+![Wireframe](./MD-Images/screen3.png)
 
 ### Sprint 1
 In sprint one we were to have a minimal viable product complete. This was to be a complete working game at its most basic level. All the key functions had to be working. In the picture above you can see how I differentiated what I was to do in each sprint.
@@ -148,8 +148,8 @@ function duckSelect() {
 
 ## Finished product
 
-![Wireframe](./MD-Images/Screen Shot 2018-02-08 at 16.14.32.png)
+![Wireframe](./MD-Images/screen1.png)
 Main screen
 
-![Wireframe](./MD-Images/Screen Shot 2018-02-08 at 16.14.43.png)
+![Wireframe](./MD-Images/screen2.png)
 Click Start
