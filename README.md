@@ -6,10 +6,19 @@
 A JavaScript / Jquery game built using HTML with added bootstrap, and CSS.
 
 ## Installation
-1. Go to https://github.com/cbryant93/sparta-core-project-1/tree/add-ons
+1. Go to https://github.com/cbryant93/sparta-core-project-1/tree/dev
 2. Download Zip file
 3. In pages folder, open index.html in browser.
 4. Enjoy!
+
+## How to play
+Aim of the game is to click and shoot targets which fly across the screen. However certain targets give different types of points.
+
+If you are a vegan/vegetarian you may feel like you don't want to shoot birds, so you can shoot carrots instead to gain 3 'Vegan points', each missed shot also allows you to gain 1 'Vegan Point'.
+
+If you enjoy shooting ducks, then you will gain 1 'Carnivore Point' doing this. You can also gain extra 3 'Carnivore Points' by clicking and shooting pieces of meat.
+
+Gain as many points you can before the timer runs out!
 
 ## Task Requirements
 1. Build a browser based game.
@@ -19,9 +28,9 @@ A JavaScript / Jquery game built using HTML with added bootstrap, and CSS.
 
 ## Approach
 ### Game Idea
-I wanted to create a game which had I knew could be realistically completed in the set amount time given based on my coding skills.
+I wanted to create a game which I knew could be realistically completed in the set amount time given based on my coding skills.
 
-I decided to make a point in click game, due to learning all the core concepts behind this in the prior 2 weeks of learning.
+I decided to make a point and click game, a decision based on learning all the core concepts behind this concept in the prior 2 weeks of learning.
 
 My final Game idea was a spin-off of the famous retro game: 'Duck Hunt'. The spin-off detail was a modern twist where the user would have the option to still gain points from not killing the ducks, to keep everyone happy.
 
@@ -38,16 +47,16 @@ Drawing the wireframes helped me visualise the functions on the screen to see wh
 Using my wireframes I went through the the different user journeys one may take when playing the game. I wrote down on paper what features would be needed to make a user friendly game.
 
 ## Sprints
-For this project we were to use the agile methodology as a basis to our work style. To help follow work progress we used trello.
+For this project we were to use the agile methodology as a basis to our work style. To help follow our own progress we used trello.
 
 ![Wireframe](./MD-Images/Screen Shot 2018-02-08 at 14.42.34.png)
 
 ### Sprint 1
-In sprint one we were to have a minimal viable product complete. This was a complete working game at its most basic design. All the key functions had to be working. In the picture above you can see what how I differentiated this.
+In sprint one we were to have a minimal viable product complete. This was to be a complete working game at its most basic level. All the key functions had to be working. In the picture above you can see how I differentiated what I was to do in each sprint.
 
 ### Issues in sprint 1
 #### Create duck function
-The main problem I had was spawning the targets. At first I didn't know how I was going to tackle this function. One idea I had was making an array of ducks and creating a loop where they all appear one by one. I realised this would be many lines of code of divs in the HTML containing ducks. I then realised I could create a div in Jquery, and somehow keep creating the div with a set interval, to appear on the page.
+The main problem I had was spawning the targets. At first I didn't know how I was going to tackle this function. One idea I had was making an array of ducks and creating a loop where they all appear one by one. I realised this would be too many lines of code consisting of divs in the HTML. I then realised I could create a div in Jquery, and somehow keep creating the div with a set interval, to appear on the page.
 
 ```javascript
 function createDuck() {
@@ -136,14 +145,6 @@ function duckSelect() {
 }
 
 ```
-## How to play
-Aim of the game is to click and shoot targets which fly across the screen. However certain targets give different types of points.
-
-If you are a vegan/vegetarian you may feel like you don't want to shoot birds, so you can shoot carrots instead to gain 3 'Vegan points', each missed shot also allows you to gain 1 'Vegan Point'.
-
-If you enjoy shooting ducks, then you will gain 1 'Carnivore Point' doing this. You can also gain extra 3 'Carnivore Points' by clicking and shooting pieces of meat.
-
-Gain as many points you can before the timer runs out!
 
 ## Finished product
 
