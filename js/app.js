@@ -11,8 +11,8 @@ $(document).ready(function() {
   var duckId = 1; //Unique duck ID
   var carrotId = 1; //Unique carrot ID
   var meatId = 1; //Unique meat ID
-  var bang = new Audio('../sounds/gun-shot.wav'); //Gun sound src
-  var music = new Audio('../sounds/Mask_Off_8_Bit.mp3'); //music src
+  var bang = new Audio('./sounds/gun-shot.wav'); //Gun sound src
+  var music = new Audio('./sounds/Mask_Off_8_Bit.mp3'); //music src
 
 
   // Click start button to start the game
@@ -163,7 +163,7 @@ $(document).ready(function() {
     $(this).remove(); //Removes duck <div> from screen
     duckClicked = true;
     $points.html($("<p>" + score + "</p>")); //updates carnivore score in the html
-    var quak = new Audio('../sounds/quak.wav');
+    var quak = new Audio('./sounds/quak.wav');
     quak.play(); //Plays duck sound if duck is shot
     bang.play(); //Plays gun sound if duck is shot
 
@@ -238,7 +238,7 @@ $(document).ready(function() {
 
       stopElement = clearInterval(createElement); //Stop creating targets
       music.pause(); //Pause music
-      var laugh = new Audio('../sounds/dog-laugh.mp3');
+      var laugh = new Audio('./sounds/dog-laugh.mp3');
       laugh.play(); //Play game over sound
     });
   }
